@@ -14,12 +14,17 @@ export class PokemonService {
   constructor( private http : HttpClient) { }
 
 
-  getPokemons() : Observable<Pokemons>{
-    const url : string = this.baseUrl+`pokemon?offset=0&limit=10`
+  getPokemons(offset:number = 0) : Observable<Pokemons>{
+
+    const url : string = this.baseUrl+`pokemon?offset=${offset}&limit=10`
     return this.http.get<Pokemons>(url)
   }
   getPokemon(query : string) : Observable<Pokemon[]>{
     return this.http.get<Pokemon[]>(query)
+  }
+  getPokemonById(id : number) : Observable<Pokemon>{
+    const url : string = this.baseUrl+`pokemon/${id}`    
+    return this.http.get<Pokemon>(url)
   }
 
 }

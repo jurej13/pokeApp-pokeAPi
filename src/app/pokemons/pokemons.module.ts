@@ -16,11 +16,13 @@ import { PokemonService } from './services/pokemon.service';
     PokemonsComponent,
     PokedexComponent,
     CardComponent,
+    
   ],
   imports: [
     CommonModule,
     PokemonsRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers:[PokemonService]
 })

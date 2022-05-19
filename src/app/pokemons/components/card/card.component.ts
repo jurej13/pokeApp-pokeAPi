@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { tap } from 'rxjs';
 import { Pokemon } from '../../interfaces/pokemon.interface';
 import { Pokemons } from '../../interfaces/pokemons.interface';
 import { PokemonService } from '../../services/pokemon.service';
@@ -9,45 +10,23 @@ import { PokemonService } from '../../services/pokemon.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent implements OnChanges {
+  @Input() pokemons !: Pokemons
   pokemon !: Pokemon[]
+  pokemonArr : any = []
+  constructor(private PokemonService : PokemonService) {}
   
-  pokemons !:Pokemons
-  constructor(private PokemonService : PokemonService) { }
-
-  ngOnInit(): void {
-    // this.PokemonService.getPokemons()
-    //   .pipe(
-    //     tap( _ => this.PokemonService.getPokemons()),
-    //   )
-    //   .subscribe(pokemon => {
-    //     const pokArr :any = []
-    //     pokemon.results.forEach(({url})=> {
-    //       this.PokemonService.getPokemon(url).subscribe(resp=>{
-    //         pokArr.push(resp)
-    //         this.pokemon = pokArr
-    //         console.log(this.pokemon)
-    //       })
-    //     })
-    //   })
-      // Lugar para romper
-    this.PokemonService.getPokemons()
-    .pipe(
-      tap( _ => this.PokemonService.getPokemons()),
-      map((pokemon) => {
-        const pokArr : any = []
-        pokemon.results.forEach(({url})=>{
-          this.PokemonService.getPokemon(url).subscribe(resp=>{
-            pokArr.push(resp)
-            this.pokemon = pokArr
-            
-          })
-        })
+  ngOnChanges(changes: SimpleChanges): void {
+    this.pokemons.results.forEach(({url})=>{
+      this.PokemonService.getPokemon(url).subscribe(resp=>{
+        this.pokemonArr.push(resp)
+        this.pokemon = this.pokemonArr
       })
-    ).pipe(
-      tap(_ =>console.log('tap', this.pokemon))
-    )
+      this.pokemonArr = []
+    })  
   }
+
+  
   
 
 }

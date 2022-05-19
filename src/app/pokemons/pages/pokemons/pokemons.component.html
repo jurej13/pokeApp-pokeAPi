@@ -1,1 +1,13 @@
-<app-card></app-card>
+
+<div *ngIf="!pokemons ; else divCard">
+   <h3>Cargando</h3>
+</div>
+
+<ng-template #divCard>
+    <app-card [pokemons]="pokemons"></app-card>
+    <ul class="pagination d-flex justify-content-center">
+        <li class="page-item"><button  [disabled]="offSet== 0" class="page-link" (click)="goBack()">Previous</button></li>
+        <li class="page-item"><button  class="page-link" (click)="goNext()">Next</button></li>
+    </ul>
+</ng-template>
+  
