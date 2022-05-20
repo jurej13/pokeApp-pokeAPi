@@ -8,6 +8,8 @@ import { PokedexComponent } from './pages/pokedex/pokedex.component';
 import { CardComponent } from './components/card/card.component';
 import {HttpClientModule} from '@angular/common/http'
 import { PokemonService } from './services/pokemon.service';
+import { TypesPokemonPipe } from './pipes/types-pokemon.pipe';
+import { EvolutionComponent } from './pages/evolution/evolution.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { PokemonService } from './services/pokemon.service';
     PokemonsComponent,
     PokedexComponent,
     CardComponent,
+    TypesPokemonPipe,
+    EvolutionComponent,
     
   ],
   imports: [

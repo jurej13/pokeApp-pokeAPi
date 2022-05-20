@@ -17,8 +17,7 @@ export class DetailsPokemonComponent implements OnInit {
     this.route.params.pipe(
       switchMap(({id})=>this.pokemonService.getPokemonById(id))
     ).subscribe(pokemon =>{this.pokemon = pokemon
-      console.log(this.pokemon)
-    })
+    console.log(this.pokemon)})
     
   }
 

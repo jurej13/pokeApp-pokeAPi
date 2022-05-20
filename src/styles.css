@@ -8,5 +8,5 @@ body,html{
     box-sizing: border-box;
     letter-spacing: 1px;
     background-color: #ccc;
-    
+    overflow-x: hidden;
 }
