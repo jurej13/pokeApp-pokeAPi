@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../interfaces/pokemon.interface';
 import { Pokemons } from '../interfaces/pokemons.interface';
+import { LocationEncounter } from '../interfaces/location_encounter.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,13 @@ export class PokemonService {
   getPokemonById(id : number) : Observable<Pokemon>{
     const url : string = this.baseUrl+`pokemon/${id}`    
     return this.http.get<Pokemon>(url)
+  }
+  getPokemonByName(name : string) : Observable<Pokemon>{
+    const url : string = this.baseUrl+`pokemon/${name}`    
+    return this.http.get<Pokemon>(url)
+  }
+  getLocation(query : string) : Observable<LocationEncounter[]>{
+    return this.http.get<LocationEncounter[]>(query)
   }
 
 }

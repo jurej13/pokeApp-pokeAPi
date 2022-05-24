@@ -1,1 +1,10 @@
-<p>pokedex works!</p>
+<div class="row d-flex justify-content-center align-content-center">
+    <div class="col-sm-6 border p-3">
+        <div class="p-3 d-flex justify-content-center align-content-center">
+            <input type="text" placeholder="Buscar.." #buscador (keyup.enter)="search(buscador.value)">
+        </div>
+        <div *ngIf="pokemon" class="d-flex justify-content-center">
+            <app-card-pokedex [pokemon]="pokemon"></app-card-pokedex>
+        </div>
+    </div>
+</div>

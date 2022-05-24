@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { PokemonService } from './services/pokemon.service';
 import { TypesPokemonPipe } from './pipes/types-pokemon.pipe';
 import { EvolutionComponent } from './pages/evolution/evolution.component';
+import { CardPokedexComponent } from './components/card-pokedex/card-pokedex.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { EvolutionComponent } from './pages/evolution/evolution.component';
     CardComponent,
     TypesPokemonPipe,
     EvolutionComponent,
+    CardPokedexComponent,
     
   ],
   imports: [
