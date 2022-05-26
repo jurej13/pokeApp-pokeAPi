@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { Pokemon } from '../interfaces/pokemon.interface';
 import { Pokemons } from '../interfaces/pokemons.interface';
 import { LocationEncounter } from '../interfaces/location_encounter.interface';
+import { EvolutionChain } from '../interfaces/evolutionChain.interface';
+import { SpeciesPokemon } from '../interfaces/species.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +16,7 @@ export class PokemonService {
   baseUrl : string = environment.url_Api
   constructor( private http : HttpClient) { }
 
-
   getPokemons(offset:number = 0) : Observable<Pokemons>{
-
     const url : string = this.baseUrl+`pokemon?offset=${offset}&limit=10`
     return this.http.get<Pokemons>(url)
   }
@@ -31,8 +31,19 @@ export class PokemonService {
     const url : string = this.baseUrl+`pokemon/${name}`    
     return this.http.get<Pokemon>(url)
   }
-  getLocation(query : string) : Observable<LocationEncounter[]>{
-    return this.http.get<LocationEncounter[]>(query)
+  getLocation(id:number) : Observable<LocationEncounter[]>{
+    const url : string = this.baseUrl + `pokemon/${id}/encounters`
+    return this.http.get<LocationEncounter[]>(url)
+  }
+  getPokemonSpecies(id:number) :Observable<SpeciesPokemon> {
+    const url : string = this.baseUrl + `pokemon-species/${id}`
+    return this.http.get<SpeciesPokemon>(url)
+  }
+  getEvolutionChain(query : string) : Observable<EvolutionChain>{
+    // https://pokeapi.co/api/v2/evolution-chain/1/
+    // https://pokeapi.co/api/v2/pokemon-species/
+    
+    return this.http.get<EvolutionChain>(query)
   }
 
 }
