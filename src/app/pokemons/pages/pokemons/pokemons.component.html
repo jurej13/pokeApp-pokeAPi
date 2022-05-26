@@ -1,6 +1,6 @@
 
-<div *ngIf="!pokemons ; else divCard">
-   <h3>Cargando</h3>
+<div class="d-flex justify-content-center align-items-center" *ngIf="!pokemons ; else divCard">
+    <p-progressSpinner></p-progressSpinner>
 </div>
 
 <ng-template #divCard>

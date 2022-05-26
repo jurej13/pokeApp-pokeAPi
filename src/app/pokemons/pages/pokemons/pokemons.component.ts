@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { delay } from 'rxjs';
 import { Pokemons } from '../../interfaces/pokemons.interface';
 import { PokemonService } from '../../services/pokemon.service';
 
@@ -15,7 +16,9 @@ export class PokemonsComponent implements OnInit {
  
 
   ngOnInit(): void {
-    this.pokemonService.getPokemons(this.offSet)
+    this.pokemonService.getPokemons(this.offSet).pipe(
+      delay(2000)
+    )
       .subscribe(resp => {
         this.pokemons = resp
         

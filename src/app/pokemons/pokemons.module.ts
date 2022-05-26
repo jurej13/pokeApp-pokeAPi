@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { PokemonService } from './services/pokemon.service';
 import { TypesPokemonPipe } from './pipes/types-pokemon.pipe';
 import { CardPokedexComponent } from './components/card-pokedex/card-pokedex.component';
+import { PrimeNGModule } from '../prime-ng/prime-ng.module';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { CardPokedexComponent } from './components/card-pokedex/card-pokedex.com
     CommonModule,
     PokemonsRoutingModule,
     HttpClientModule,
-    
+    PrimeNGModule
   ],
   providers:[PokemonService]
 })

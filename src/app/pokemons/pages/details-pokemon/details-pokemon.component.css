@@ -5,3 +5,13 @@ img{
 .pointer{
     cursor:pointer;
 }
+.tamaño-evos{
+    border-radius: 50%;
+    background-color: black;
+    margin-left: 10px;
+} 
+.texto{
+    letter-spacing: 1px;
+    margin-top: 5px;
+    
+}
